@@ -10,5 +10,15 @@ import (
  
 
 func main() {
-    
+    var input string
+
+    for {
+        input, err := utils.GetInput(" > ")
+        if err != nil {
+            log.Fatal(err)
+        }
+        command := fileman.ParseCommand(input)
+
+    }
+
 }
