@@ -3,6 +3,9 @@
 A **simple** file manager, which is probably filled with security vulnerabilities **HOWEVER**
 Made in a **hour** (approx. 05:20:00 to 06:20:00)
 
+## Building
+There are build scripts provided for **each** platform (x64)
+
 ## Commands
  - **Create** *File name*: Creates a file in the current working directory with the given file name
  - **Read** *File name*: Reads and outputs the files contents
