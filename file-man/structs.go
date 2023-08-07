@@ -12,3 +12,8 @@ const (
     Help Command = "help"
     Exit Command = "exit"
 )
+
+type FullCommand struct {
+    Cmd Command
+    Name string
+}
