@@ -1,12 +1,10 @@
 package utils
-
 import (
 	"bufio"
 	"fmt"
 	"os"
 	"strings"
 )
-
 func GetInput(prompt string) (string, error) {
     reader := bufio.NewReader(os.Stdin)    
     fmt.Print(prompt)

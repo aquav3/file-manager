@@ -1,7 +1,5 @@
 package fileman
-
 type Command string
-
 const (
     Create Command = "create"
     Read Command = "read"
@@ -11,7 +9,6 @@ const (
     Pwd Command = "pwd"
     Help Command = "help"
 )
-
 type FullCommand struct {
     Cmd Command
     Name string

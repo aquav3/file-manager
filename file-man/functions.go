@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
-
 	"github.com/aquav3/file-manager/utils"
 )
 
@@ -17,7 +16,6 @@ func createFile(filename string) error {
     if err != nil {
         return err
     }
-
     return nil
 }
 
@@ -27,7 +25,6 @@ func readFile(filename string) error {
         return err
     }
     fmt.Println(string(content))
-
     return nil
 }
 
@@ -44,11 +41,9 @@ func ls() error {
     if err != nil {
         return err
     }
-
     for _, file := range files {
         fmt.Println(file.Name())
     }
-
     return nil
 }
 
@@ -77,7 +72,6 @@ func ParseCommand(cmd string) FullCommand {
         Name: "",
     }
     tokens := strings.Split(cmd, " ")
-
     switch tokens[0] {
         case "create":
             result.Cmd = Create
@@ -94,12 +88,10 @@ func ParseCommand(cmd string) FullCommand {
         case "help":
             result.Cmd = Help
     }
-
     result.Name = "Empty"
     if len(tokens) == 2 {
         result.Name = tokens[1]
     }
-
     return result
 }
 
