@@ -1,11 +1,11 @@
 package fileman
 
 import (
-	"errors"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"strings"
+	"sync"
 	"github.com/aquav3/file-manager/utils"
 )
 
@@ -96,20 +96,40 @@ func ParseCommand(cmd string) FullCommand {
 }
 
 func RunCommand(cmd FullCommand) error {
-    err := errors.New("")
+    var wg sync.WaitGroup
+    var err error
+    wg.Add(1)
     switch cmd.Cmd {
         case Create:
-            err = createFile(cmd.Name)
+            go func() {
+                defer wg.Done()
+                err = createFile(cmd.Name)
+            }()
         case Read:
-            err = readFile(cmd.Name)
+            go func() {
+                defer wg.Done()
+                err = readFile(cmd.Name)
+            }()
         case Delete:
-            err = deleteFile(cmd.Name)
+            go func() {
+                defer wg.Done()
+                err = deleteFile(cmd.Name)
+            }()
         case Ls:
-            err = ls()
+            go func() {
+                defer wg.Done()
+                err = ls()
+            }()
         case Pwd:
-            pwd()
+            go func() {
+                defer wg.Done()
+                pwd()
+            }()
         case Help:
-            help()
+            go func() {
+                defer wg.Done()
+                help()
+            }()
     }   
     return err 
 }
