@@ -10,7 +10,6 @@ const (
     Cd Command = "cd"
     Pwd Command = "pwd"
     Help Command = "help"
-    Exit Command = "exit"
 )
 
 type FullCommand struct {

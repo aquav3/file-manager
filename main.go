@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
     "github.com/aquav3/file-manager/file-man"
 	"github.com/aquav3/file-manager/utils"
@@ -10,15 +9,14 @@ import (
  
 
 func main() {
-    var input string
-
     for {
         input, err := utils.GetInput(" > ")
         if err != nil {
             log.Fatal(err)
         }
-        command := fileman.ParseCommand(input)
-
+        fileman.RunCommand(fileman.ParseCommand(input))
+        if input == "exit" {
+            break
+        }
     }
-
 }

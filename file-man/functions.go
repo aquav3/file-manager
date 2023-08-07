@@ -25,7 +25,7 @@ func readFile(filename string) error {
     if err != nil {
         return err
     }
-    fmt.Println(content)
+    fmt.Println(string(content))
 
     return nil
 }
@@ -94,10 +94,10 @@ func ParseCommand(cmd string) FullCommand {
             result.Cmd = Help
     }
 
+    result.Name = "Empty"
     if len(tokens) == 2 {
         result.Name = tokens[1]
     }
-    result.Name = "Empty"
 
     return result
 }
