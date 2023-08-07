@@ -1,6 +1,7 @@
 package fileman
 
 import (
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -102,19 +103,21 @@ func ParseCommand(cmd string) FullCommand {
     return result
 }
 
-func RunCommand(cmd FullCommand) {
+func RunCommand(cmd FullCommand) error {
+    err := errors.New("")
     switch cmd.Cmd {
         case Create:
-            createFile(cmd.Name)
+            err = createFile(cmd.Name)
         case Read:
-            readFile(cmd.Name)
+            err = readFile(cmd.Name)
         case Delete:
-            deleteFile(cmd.Name)
+            err = deleteFile(cmd.Name)
         case Ls:
-            ls()
+            err = ls()
         case Pwd:
             pwd()
         case Help:
             help()
-    }     
+    }   
+    return err 
 }

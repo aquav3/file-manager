@@ -8,10 +8,10 @@ func ChangeDirectory(path string) error {
     return os.Chdir(path)
 }
 
-func GetCurrentWorkingDirectory() string {
+func GetCurrentWorkingDirectory() (string, error) {
     dir, err := os.Getwd()
     if err != nil {
-        return ""
+        return "", err
     } 
-    return dir
+    return dir, nil
 }

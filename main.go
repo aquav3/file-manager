@@ -14,9 +14,13 @@ func main() {
         if err != nil {
             log.Fatal(err)
         }
-        fileman.RunCommand(fileman.ParseCommand(input))
+        err = fileman.RunCommand(fileman.ParseCommand(input))
         if input == "exit" {
             break
+        }
+
+        if err != nil {
+            log.Fatal(err)
         }
     }
 }
